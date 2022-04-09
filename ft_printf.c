@@ -20,6 +20,7 @@ int	ft_printf(const char *fmt, ...) {
 					str = "(null)";
 				while (str[len])
 					len++;
+				va_end(ap);
 				g_var += len;
 				write(1, str, len);
 			}
