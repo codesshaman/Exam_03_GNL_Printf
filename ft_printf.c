@@ -44,3 +44,14 @@ int	ft_printf(const char *fmt, ...) {
 	va_end(ap);
 	return(g_var);
 }
+/*
+int main(void) {
+	int res;
+	// char *str = NULL;
+	// res = printf("%s","");
+	res = printf("TEXT %d TEXT %d TEXT %x", -15, 11, 15);
+	// res = printf("%s %d", "vsem priv",1115252523);
+	printf("\n");
+	printf("%d\n", res);
+	// printf("%x", 17);
+}*/
