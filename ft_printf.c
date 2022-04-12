@@ -7,13 +7,13 @@ void	ft_putnbr(long dig, int len, char *sign) {
 	write (1, &sign[dig % len], 1);
 	g_var++;
 }
-int	ft_printf(const char *fmt, ...) {
+int	ft_printf(const char *spec, ...) {
 	va_list	ap;
-	va_start(ap, fmt);
-	while (*fmt) {
-		if (*fmt == '%') {
-			fmt++;
-			if (*fmt == 's') {
+	va_start(ap, spec);
+	while (*spec) {
+		if (*spec == '%') {
+			spec++;
+			if (*spec == 's') {
 				int	len = 0;
 				char *str = va_arg(ap, char *);
 				if (!str)
@@ -24,7 +24,7 @@ int	ft_printf(const char *fmt, ...) {
 				g_var += len;
 				write(1, str, len);
 			}
-			else if (*fmt == 'd') {
+			else if (*spec == 'd') {
 				int d = va_arg(ap, int);
 				if (d < 0) {
 					write(1, "-", 1);
@@ -33,14 +33,14 @@ int	ft_printf(const char *fmt, ...) {
 				}
 				ft_putnbr(d, 10, "0123456789");
 			}
-			else if (*fmt == 'x') {
+			else if (*spec == 'x') {
 				int x = va_arg(ap, unsigned);
 				ft_putnbr(x, 16, "0123456789abcdef");
 			}
-			fmt++;
+			spec++;
 		}
 		else
-			g_var += write(1, fmt++, 1);
+			g_var += write(1, spec++, 1);
 	}
 	va_end(ap);
 	return(g_var);
